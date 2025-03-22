@@ -1,0 +1,274 @@
+@import 'tailwindcss';
+
+@font-face {
+	font-family: 'Ceraso';
+	src: url('$assets/fonts/Ceraso.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Olivia Bold';
+	src: url('$assets/fonts/OliviaBold.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Voire Light';
+	src: url('$assets/fonts/Voire-Light.ttf') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+:root {
+	--border-shaow-medium: 0rem 1rem 2rem 0.2rem rgba(0, 0, 0, 0.05);
+	--border-shaow-large: 1rem 2rem 2rem rgba(0, 0, 0, 0.1);
+
+	--color-kamen-light-2: #eceae6;
+	--color-kamen-light-1: #f0ece4;
+	--color-kamen-dark-1: #ebe7e2;
+	--color-kamen-dark-2: #e6dfd3;
+
+	--color-sand: #ddcfb8;
+	--color-sand-light: #e9e0c9;
+	--color-sand-dark: #c7b89e;
+
+	--color-turquoise: #699399;
+	--color-turquoise-light: #80a7ad;
+	--color-turquoise-dark: #567d83;
+
+	--color-turquise-var: #5f787b;
+	--color-turquise-var-light: #7a9295;
+	--color-turquise-var-dark: #455e61;
+
+	--color-green: #809369;
+	--color-green-light: #99ad7d;
+	--color-green-dark: #697d4d;
+
+	--color-green-grey: #aeb9b0;
+	--color-green-grey-light: #c3d0c7;
+	--color-green-grey-dark: #99a69d;
+
+	--color-brown: #80694d;
+	--color-brown-light: #998066;
+	--color-brown-dark: #664d33;
+
+	--color-brown-black: #5f787b;
+	--color-brown-black-light: #7a9295;
+	--color-brown-black-dark: #455e61;
+
+	--color-brown-grey: #aeb9b0;
+	--color-brown-grey-light: #c3d0c7;
+	--color-brown-grey-dark: #99a69d;
+}
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+	-webkit-tap-highlight-color: transparent;
+	scroll-behavior: smooth;
+}
+
+html,
+body {
+	font-size: 62.5%;
+	font-family: 'Voire Light', sans-serif;
+	background-color: var(--color-kamen-light-2);
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+
+	&:hover,
+	&:focus {
+		color: inherit;
+		text-decoration: none;
+	}
+}
+
+ul,
+li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-indent: 0;
+	list-style-type: 0;
+}
+
+button {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	outline: none;
+	font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin: 0;
+}
+
+/* Global Typography Styles */
+
+h1 {
+	font-size: 8rem;
+	line-height: 1.1;
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 6rem;
+	line-height: 1.2;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 4rem;
+	line-height: 1.3;
+}
+
+h4 {
+	font-size: 2.8rem;
+	line-height: 1.3;
+	font-weight: normal;
+}
+p,
+li {
+	font-size: 1.8rem;
+	line-height: 1.4;
+}
+
+p {
+	margin-bottom: 1rem;
+}
+
+/* "BIG" Utility Classes */
+
+.container {
+	max-width: 120rem;
+	margin: 0 auto;
+	padding: 0 3.2rem;
+}
+
+/* UTILITY CLASSES */
+.dark-grey {
+	color: #5e5e5e;
+}
+
+.text-align-right {
+	text-align: right;
+}
+
+.text-align-left {
+	text-align: left;
+}
+
+.default-margin {
+	margin-left: 15vw;
+	margin-right: 20vw;
+	max-width: 95rem;
+}
+
+.underscore {
+	background-color: #5e5e5e;
+	height: 0.4rem;
+	width: 4rem;
+}
+
+.link {
+	text-decoration: underline;
+}
+
+/* "SMALL" Utility Classes */
+
+.mt-xs {
+	margin-top: 0.8rem;
+}
+
+.mt-s {
+	margin-top: 1.6rem;
+}
+
+.mt-m {
+	margin-top: 3.2rem;
+}
+
+.mt-l {
+	margin-top: 6.4rem;
+}
+
+.mb-xs {
+	margin-bottom: 0.8rem;
+}
+
+.mb-s {
+	margin-bottom: 1.6rem;
+}
+
+.mb-m {
+	margin-bottom: 3.2rem;
+}
+
+.mb-l {
+	margin-bottom: 6.4rem;
+}
+
+.mr-xs {
+	margin-right: 0.8rem;
+}
+
+.mr-s {
+	margin-right: 1.6rem;
+}
+
+.mr-m {
+	margin-right: 3.2rem;
+}
+
+.mr-l {
+	margin-right: 6.4rem;
+}
+
+.ml-xs {
+	margin-left: 0.8rem;
+}
+
+.ml-s {
+	margin-left: 1.6rem;
+}
+
+.ml-m {
+	margin-left: 3.2rem;
+}
+
+.ml-l {
+	margin-left: 6.4rem;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.semi-bold {
+	font-weight: 500;
+}
+
+/* BOX SHADOWS */
+
+.bs-m {
+	box-shadow: var(--border-shaow-medium);
+}
+
+.bs-l {
+	box-shadow: var(--border-shaow-large);
+}
