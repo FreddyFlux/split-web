@@ -4,16 +4,17 @@
 	interface SanityProps {
 		data: {
 			places: ProcessedPlaces[];
+			placesSections: ProcessedPlacesSection[];
 		};
 	}
 
 	let { data }: SanityProps = $props();
 </script>
 
-<section class="places-section container">
-	<h2 class="places-title">{data.places[0].placesTitle}</h2>
+<section class="places-section container" id="places">
+	<h2 class="places-title">{data.placesSections[0].placesHeadline}</h2>
 	<div class="places-description-container">
-		<p class="places-description">{data.places[0].placesDescription}</p>
+		<p class="places-description">{data.placesSections[0].placesContent}</p>
 	</div>
 	<PlacesCard data={data.places} />
 </section>

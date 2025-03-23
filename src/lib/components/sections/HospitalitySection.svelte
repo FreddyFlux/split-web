@@ -9,7 +9,7 @@
 	let { data }: SanityProps = $props();
 </script>
 
-<section class="hospitality-section container">
+<section class="hospitality-section container" id="hospitality">
 	<h2 class="hospitality-title">{data.hospitalitySections[0].hospitalityHeadline}</h2>
 	<p class="hospitality-description">{data.hospitalitySections[0].hospitalityContent}</p>
 
@@ -19,7 +19,7 @@
 				href="/{data.hospitalitySections[0].language}/cuisine/{hospitality.slug}"
 				class="hospitality-card"
 			>
-				<h3 class="hospitality-title">{hospitality.hospitalityHeadline}</h3>
+				<h3 class="hospitality-title mb-s">{hospitality.hospitalityHeadline}</h3>
 				<img
 					class="hospitality-image"
 					src={hospitality.image}

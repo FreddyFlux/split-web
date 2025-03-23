@@ -3,15 +3,7 @@
 
 	interface HeroSectionProps {
 		data: {
-			heroSections: {
-				staticWord: string;
-				dynamicWord: string[];
-				button: string;
-				buttonLink: string[];
-				ctaTitle: string;
-				ctaDescription: string;
-				language: string;
-			};
+			heroSections: ProcessedHeroSection;
 		};
 		lang: string;
 	}
@@ -30,7 +22,7 @@
 	<p>{ctaDescription}</p>
 	<div class="hero-cta-links">
 		{#each buttonLink as link}
-			<a href="/">{link}</a>
+			<a href={link.url}>{link.urlDescription}</a>
 		{/each}
 	</div>
 </div>

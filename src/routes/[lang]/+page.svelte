@@ -16,6 +16,7 @@
 			aboutSections: ProcessedAboutSection;
 			language: string;
 			places: ProcessedPlaces[];
+			placesSections: ProcessedPlacesSection[];
 			experienceSections: ProcessedExperienceSection[];
 			experiences: ProcessedExperiences[];
 			hospitalitySections: ProcessedHospitalitySection[];

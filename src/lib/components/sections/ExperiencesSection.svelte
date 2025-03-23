@@ -9,7 +9,7 @@
 	let { data }: SanityProps = $props();
 </script>
 
-<section class="experiences-section container">
+<section class="experiences-section container" id="experiences">
 	<h2 class="experiences-title mb-m">{data.experienceSections[0].experienceHeadline}</h2>
 	<p class="experiences-description">
 		{data.experienceSections[0].experienceContent}
@@ -43,14 +43,13 @@
 	}
 
 	.experiences-container {
-		display: grid;
-		grid-template-columns: 30% 40% 30%;
-		grid-template-rows: repeat(1, 1fr);
+		display: flex;
 		gap: 2rem;
 		margin-top: 4rem;
 	}
 
 	.experience-card {
+		flex: 1;
 		width: 100%;
 		height: 100%;
 		background-color: #f0f0f0;

@@ -1,8 +1,4 @@
-import sanityClient, {
-	processHeroEntries,
-	processHeroSectionEntries,
-	processPlacesEntries
-} from '$lib/utils/sanity';
+import sanityClient, { processHeroEntries, processHeroSectionEntries } from '$lib/utils/sanity';
 
 import {
 	processHospitalityEntries,
@@ -13,6 +9,8 @@ import {
 	processExperienceSectionEntries,
 	processExperiencesEntries
 } from '$lib/utils/experienceSanity';
+
+import { processPlacesSectionEntries, processPlacesEntries } from '$lib/utils/placeSanity';
 
 import { processAboutSectionEntries } from '$lib/utils/aboutSanity';
 
@@ -54,6 +52,13 @@ export const load: PageLoad = async ({ params }) => {
 
 	const places = processPlacesEntries(rawPlaces);
 
+	const rawPlacesSections: SanityPlacesSection[] = await sanityClient.fetch(
+		`*[_type == "placesSection" && language == $lang]`,
+		{ lang }
+	);
+
+	const placesSections = processPlacesSectionEntries(rawPlacesSections);
+
 	const rawExperiences: SanityExperiences[] = await sanityClient.fetch(
 		`*[_type == "experiences" && language == $lang]`,
 		{ lang }
@@ -86,6 +91,7 @@ export const load: PageLoad = async ({ params }) => {
 		heroSections,
 		aboutSections,
 		places,
+		placesSections,
 		experiences,
 		experienceSections,
 		hospitality,

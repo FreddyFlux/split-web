@@ -1,4 +1,4 @@
-import sanityClient, { processPlacesEntries } from '$lib/utils/sanity';
+import sanityClient, { processPlacesEntries } from '$lib/utils/placeSanity';
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 
