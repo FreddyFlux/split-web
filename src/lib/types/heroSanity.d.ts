@@ -1,20 +1,3 @@
-type SanityHero = {
-	_id: string;
-	_type: 'hero';
-	_createdAt: string;
-	_updatedAt: string;
-	_rev: string;
-	title: string;
-	heroText: string;
-	language: string;
-};
-
-interface ProcessedHero {
-	title: string;
-	heroText: string;
-	language: string;
-}
-
 type SanityHeroSection = {
 	_id: string;
 	_type: 'heroSection';

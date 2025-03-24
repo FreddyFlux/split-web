@@ -10,8 +10,8 @@
 </script>
 
 <section class="hospitality-section container" id="hospitality">
-	<h2 class="hospitality-title">{data.hospitalitySections[0].hospitalityHeadline}</h2>
-	<p class="hospitality-description">{data.hospitalitySections[0].hospitalityContent}</p>
+	<h2 class="hospitality-title mb-s">{data.hospitalitySections[0].hospitalityHeadline}</h2>
+	<p class="hospitality-description mb-m">{data.hospitalitySections[0].hospitalityContent}</p>
 
 	<div class="hospitality-container">
 		{#each data.hospitality as hospitality}

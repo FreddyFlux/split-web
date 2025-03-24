@@ -1,6 +1,7 @@
 <script lang="ts">
 	import logoImg from '$assets/img/splitsko-logo.png';
 	import { LangButtons } from '$components';
+	import Button from './Button.svelte';
 	import { onMount } from 'svelte';
 
 	export let slug: string | undefined = undefined;
@@ -71,7 +72,10 @@
 	</div>
 	<LangButtons {setLanguage} />
 	<div class="menu">
-		<a href="/">contact</a>
+		<a href="#places">places</a>
+		<a href="#experiences">experiences</a>
+		<a href="#hospitality">hospitality</a>
+		<Button href="#places" variant="outline">contact</Button>
 	</div>
 </nav>
 

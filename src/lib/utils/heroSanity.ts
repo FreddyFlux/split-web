@@ -10,17 +10,6 @@ const config: ClientConfig = {
 const sanityClient = createClient(config);
 export default sanityClient;
 
-export function processHeroEntries(rawHeroes: SanityHero[]) {
-	const processedHeroes: ProcessedHero[] = rawHeroes.map((hero) => {
-		return {
-			title: hero.title,
-			heroText: hero.heroText,
-			language: hero.language
-		};
-	});
-	return processedHeroes;
-}
-
 export function processHeroSectionEntries(rawHeroSections: SanityHeroSection[]) {
 	const processedHeroSections: ProcessedHeroSection[] = rawHeroSections.map((heroSection) => {
 		return {

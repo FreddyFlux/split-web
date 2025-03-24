@@ -1,4 +1,4 @@
-import sanityClient, { processHeroEntries, processHeroSectionEntries } from '$lib/utils/sanity';
+import sanityClient, { processHeroSectionEntries } from '$lib/utils/heroSanity';
 
 import {
 	processHospitalityEntries,
@@ -20,21 +20,14 @@ import type { PageLoad } from './$types';
 export const load: PageLoad = async ({ params }) => {
 	const lang = params.lang;
 
-	const rawHeroes: SanityHero[] = await sanityClient.fetch(
-		`*[_type == "hero" && language == $lang]`,
-		{ lang }
-	);
-
-	if (rawHeroes.length !== 1) {
-		throw error(404, 'Project not found');
-	}
-
-	const hero = processHeroEntries(rawHeroes)[0];
-
 	const rawHeroSections: SanityHeroSection[] = await sanityClient.fetch(
 		`*[_type == "heroSection" && language == $lang]`,
 		{ lang }
 	);
+
+	if (rawHeroSections.length !== 1) {
+		throw error(404, 'Page not found');
+	}
 
 	const heroSections = processHeroSectionEntries(rawHeroSections)[0];
 
@@ -87,7 +80,6 @@ export const load: PageLoad = async ({ params }) => {
 
 	const experiences = processExperiencesEntries(rawExperiences);
 	return {
-		hero,
 		heroSections,
 		aboutSections,
 		places,
