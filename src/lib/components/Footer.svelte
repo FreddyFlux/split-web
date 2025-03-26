@@ -1,7 +1,15 @@
-<script>
+<script lang="ts">
 	import { page } from '$app/stores';
 	import logoImg from '$assets/img/splitsko-logo.png';
 	import Icon from '@iconify/svelte';
+	import { onMount } from 'svelte';
+
+	let currentLang: string;
+
+	onMount(() => {
+		const pathParts = window.location.pathname.split('/').filter(Boolean);
+		currentLang = pathParts[0];
+	});
 </script>
 
 <footer class="footer">
@@ -35,9 +43,13 @@
 
 		<!-- Site Links -->
 		<nav class="site-links">
-			<a href="#places" class:active={$page.url.pathname === '#places'}>Places</a>
-			<a href="#experiences" class:active={$page.url.pathname === '#experiences'}>Experiences</a>
-			<a href="#hospitality" class:active={$page.url.pathname === '#hospitality'}>Hospitality</a>
+			<a href={`/${currentLang}/#places`} class:active={$page.url.pathname === '#places'}>Places</a>
+			<a href={`/${currentLang}/#experiences`} class:active={$page.url.pathname === '#experiences'}
+				>Experiences</a
+			>
+			<a href={`/${currentLang}/#hospitality`} class:active={$page.url.pathname === '#hospitality'}
+				>Hospitality</a
+			>
 		</nav>
 	</div>
 </footer>

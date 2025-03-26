@@ -1,7 +1,6 @@
 <script lang="ts">
 	import logoImg from '$assets/img/splitsko-logo.png';
-	import { LangButtons } from '$components';
-	import Button from './Button.svelte';
+	import { LangButtons, Button } from '$components';
 	import { onMount } from 'svelte';
 
 	export let slug: string | undefined = undefined;
@@ -9,6 +8,7 @@
 	let lastScroll = 0;
 	let scrollDirection = '';
 	let nav: HTMLElement;
+	let currentLang: string;
 
 	function setLanguage(language: string) {
 		const currentPath = window.location.pathname;
@@ -31,6 +31,9 @@
 	}
 
 	onMount(() => {
+		const pathParts = window.location.pathname.split('/').filter(Boolean);
+		currentLang = pathParts[0];
+
 		const handleScroll = () => {
 			const currentScroll = window.pageYOffset;
 
@@ -72,10 +75,17 @@
 	</div>
 	<LangButtons {setLanguage} />
 	<div class="menu">
-		<a href="#places">places</a>
-		<a href="#experiences">experiences</a>
-		<a href="#hospitality">hospitality</a>
-		<Button href="#places" variant="outline">contact</Button>
+		<a href={`/${currentLang}/#places`}>places</a>
+		<a href={`/${currentLang}/#experiences`}>experiences</a>
+		<a href={`/${currentLang}/#hospitality`}>hospitality</a>
+		<Button
+			onclick={() => {
+				const currentPath = window.location.pathname;
+				const pathParts = currentPath.split('/').filter(Boolean);
+				const currentLang = pathParts[0];
+				window.location.href = `/${currentLang}/contact`;
+			}}>contact</Button
+		>
 	</div>
 </nav>
 
