@@ -9,6 +9,7 @@ type SanityContactCta = {
 	ctaDescription: Array<string>;
 	ctaButtonText: string;
 	ctaButtonLink: string;
+	peopleTitle: string;
 	language: string;
 };
 
@@ -18,6 +19,7 @@ interface ProcessedContactCta {
 	ctaDescription: Array<string>;
 	ctaButtonText: string;
 	ctaButtonLink: string;
+	peopleTitle: string;
 	language: string;
 }
 

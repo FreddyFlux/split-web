@@ -10,6 +10,7 @@ export { default as PeopleCard } from './PeopleCard.svelte';
 export { default as IntTel } from './IntTel.svelte';
 export { default as ContactForm } from './ContactForm.svelte';
 export { default as ContactCta } from './ContactCta.svelte';
+export { default as AnimateOnScroll } from './AnimateOnScroll.svelte';
 
 export { default as AboutSection } from './sections/AboutSection.svelte';
 export { default as PlacesSection } from './sections/PlacesSection.svelte';

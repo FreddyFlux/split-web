@@ -19,6 +19,7 @@ export function processContactCtaEntries(rawContactCta: SanityContactCta[]) {
 			ctaDescription: contactCta.ctaDescription,
 			ctaButtonText: contactCta.ctaButtonText,
 			ctaButtonLink: contactCta.ctaButtonLink,
+			peopleTitle: contactCta.peopleTitle,
 			language: contactCta.language
 		};
 	});

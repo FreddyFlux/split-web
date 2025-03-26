@@ -1,37 +1,50 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
+	import AnimateOnScroll from '$lib/components/AnimateOnScroll.svelte';
 
 	interface PlacesCardProps {
 		data: ProcessedPlaces[];
 	}
 
 	let { data }: PlacesCardProps = $props();
+
+	// Base delay for the entire places section to start after headline and content
+	const baseDelay = 300;
+	// Delay between each place card - increased for more prominent staggering effect
+	const cardDelay = 300;
 </script>
 
 <div class="places-card-grid">
-	{#each data as place}
-		<a href={`/${place.language}/places/${place.slug}`}>
-			<div class="places-card">
-				<img src={place.image} alt={place.name} class="places-card-image" />
-				<div class="places-card-content">
-					<h3 class="places-card-title">{place.name}</h3>
-					<span class="places-card-location mb-m"><strong>{place.location}</strong></span>
-					<div class="places-card-icon-container mt-s">
-						{#each place.placeData as data}
-							<span class="places-card-icon"
-								><Icon icon={data.iconClass} width="24  " height="24" />{data.placeData}</span
-							>
-						{/each}
+	{#each data as place, index}
+		<AnimateOnScroll
+			animation="fade-up"
+			duration={800}
+			delay={baseDelay + cardDelay * index}
+			easing="bounce"
+		>
+			<a href={`/${place.language}/places/${place.slug}`}>
+				<div class="places-card">
+					<img src={place.image} alt={place.name} class="places-card-image" />
+					<div class="places-card-content">
+						<h3 class="places-card-title">{place.name}</h3>
+						<span class="places-card-location mb-m"><strong>{place.location}</strong></span>
+						<div class="places-card-icon-container mt-s">
+							{#each place.placeData as data}
+								<span class="places-card-icon"
+									><Icon icon={data.iconClass} width="24  " height="24" />{data.placeData}</span
+								>
+							{/each}
+						</div>
+					</div>
+					<div class="places-card-link">
+						<span class="places-card-link-text">Read More</span>
+						<span class="places-card-link-text">
+							<Icon icon="mdi:arrow-right" />
+						</span>
 					</div>
 				</div>
-				<div class="places-card-link">
-					<span class="places-card-link-text">Read More</span>
-					<span class="places-card-link-text">
-						<Icon icon="mdi:arrow-right" />
-					</span>
-				</div>
-			</div>
-		</a>
+			</a>
+		</AnimateOnScroll>
 	{/each}
 </div>
 

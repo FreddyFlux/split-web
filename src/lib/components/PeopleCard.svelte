@@ -2,12 +2,16 @@
 	interface PeopleCardProps {
 		data: {
 			contactPeople: ProcessedContactPeople[];
+			contactCta: ProcessedContactCta;
 		};
 	}
 
 	let { data }: PeopleCardProps = $props();
+
+	const { peopleTitle } = data.contactCta;
 </script>
 
+<h2 class="contact-about-headline mb-m mt-l">{peopleTitle}</h2>
 <div class="contact-about mb-l mt-l">
 	{#each data.contactPeople as person}
 		<div class="card">
@@ -40,6 +44,11 @@
 </div>
 
 <style>
+	.contact-about-headline {
+		margin-top: 7vh;
+		text-align: center;
+	}
+
 	.contact-about {
 		display: flex;
 		justify-content: center;
@@ -118,5 +127,6 @@
 
 	.icon {
 		font-size: 1rem;
+		margin-right: 0.7rem;
 	}
 </style>

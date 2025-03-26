@@ -3,6 +3,7 @@
 	import fredrik from '$assets/img/fredrik-profile.jpg';
 	import leana from '$assets/img/leana-profile.jpg';
 	import pebbles from '$assets/img/pebbles.jpg';
+	import AnimateOnScroll from '$lib/components/AnimateOnScroll.svelte';
 
 	interface AboutSectionProps {
 		data: {
@@ -14,54 +15,109 @@
 
 	const { aboutTitle, aboutDescription, whyUsTitle, whyUsDescription, linkList } =
 		data.aboutSections;
+
+	// Base delay for the about section
+	const baseDelay = 70;
+	// Delay between each element
+	const elementDelay = 130;
 </script>
 
 <section class="about-section container">
-	<h2 class="about-title mb-m">{aboutTitle}</h2>
+	<AnimateOnScroll animation="fade-right" duration={800} easing="bounce">
+		<h2 class="about-title mb-m">{aboutTitle}</h2>
+	</AnimateOnScroll>
+
 	<div class="about-container">
-		<div class="about-img-container">
-			<img src={splitfjord} alt="splitfjord" class="about-img" />
-		</div>
-		<div class="about-text-container">
-			<h3 class="about-text-title mb-m">Fredrik & Leana</h3>
-			<div class="about-text-img-container mb-m">
-				<div class="about-text-img-link-container">
-					<img src={fredrik} alt="fredrik" class="about-text-img" />
-				</div>
-				<div class="about-text-img-link-container">
-					<img src={leana} alt="leana" class="about-text-img" />
-				</div>
+		<AnimateOnScroll animation="fade-right" duration={800} delay={baseDelay} easing="bounce">
+			<div class="about-img-container">
+				<img src={splitfjord} alt="splitfjord" class="about-img" />
 			</div>
-			<p class="about-text">
-				{aboutDescription}
-			</p>
+		</AnimateOnScroll>
+
+		<div class="about-text-container">
+			<AnimateOnScroll
+				animation="fade-right"
+				duration={800}
+				delay={baseDelay + elementDelay}
+				easing="bounce"
+			>
+				<h3 class="about-text-title mb-m">Fredrik & Leana</h3>
+			</AnimateOnScroll>
+
+			<AnimateOnScroll
+				animation="fade-right"
+				duration={800}
+				delay={baseDelay + elementDelay * 2}
+				easing="bounce"
+			>
+				<div class="about-text-img-container mb-m">
+					<div class="about-text-img-link-container">
+						<img src={fredrik} alt="fredrik" class="about-text-img" />
+					</div>
+					<div class="about-text-img-link-container">
+						<img src={leana} alt="leana" class="about-text-img" />
+					</div>
+				</div>
+			</AnimateOnScroll>
+
+			<AnimateOnScroll
+				animation="fade-right"
+				duration={800}
+				delay={baseDelay + elementDelay * 3}
+				easing="bounce"
+			>
+				<p class="about-text">
+					{aboutDescription}
+				</p>
+			</AnimateOnScroll>
 		</div>
 	</div>
 
-	<h2 class="about-title mb-m mt-l text-align-right mt-l">{whyUsTitle}</h2>
+	<AnimateOnScroll animation="fade-right" duration={800} easing="bounce">
+		<h2 class="about-title mb-m mt-l text-align-right mt-l">{whyUsTitle}</h2>
+	</AnimateOnScroll>
+
 	<div class="about-container">
 		<div class="about-text-container">
-			<p class="about-text">
-				{whyUsDescription}
-			</p>
-			<div class="about-text-img-container mt-m">
-				<div class="about-text-img-link-container">
-					<a href={`${linkList[0].linkUrl}`} class="about-text-img-link">
-						<img src={linkList[0].image} alt={linkList[0].name} class="about-text-img" />
-						<p class="about-text-img-link-text mt-xs">{linkList[0].name}</p>
-					</a>
+			<AnimateOnScroll animation="fade-right" duration={800} delay={baseDelay} easing="bounce">
+				<p class="about-text">
+					{whyUsDescription}
+				</p>
+			</AnimateOnScroll>
+
+			<AnimateOnScroll
+				animation="fade-right"
+				duration={800}
+				delay={baseDelay + elementDelay}
+				easing="bounce"
+			>
+				<div class="about-text-img-container mt-m">
+					<div class="about-text-img-link-container">
+						<a href={`${linkList[0].linkUrl}`} class="about-text-img-link">
+							<img src={linkList[0].image} alt={linkList[0].name} class="about-text-img" />
+							<p class="about-text-img-link-text mt-xs">{linkList[0].name}</p>
+						</a>
+					</div>
+					<div class="about-text-img-link-container">
+						<a href={`${linkList[1].linkUrl}`} class="about-text-img-link">
+							<img src={linkList[1].image} alt={linkList[1].name} class="about-text-img" />
+							<p class="about-text-img-link-text mt-xs">{linkList[1].name}</p>
+						</a>
+					</div>
 				</div>
-				<div class="about-text-img-link-container">
-					<a href={`${linkList[1].linkUrl}`} class="about-text-img-link">
-						<img src={linkList[1].image} alt={linkList[1].name} class="about-text-img" />
-						<p class="about-text-img-link-text mt-xs">{linkList[1].name}</p>
-					</a>
-				</div>
+			</AnimateOnScroll>
+		</div>
+
+		<AnimateOnScroll
+			animation="fade-right"
+			duration={800}
+			delay={baseDelay + elementDelay * 2}
+			easing="bounce"
+		>
+			<div class="about-img-container">
+				<img src={pebbles} alt="pebbles" class="about-img" />
 			</div>
-		</div>
-		<div class="about-img-container">
-			<img src={pebbles} alt="pebbles" class="about-img" />
-		</div>
+		</AnimateOnScroll>
 	</div>
 </section>
 

@@ -5,7 +5,8 @@
 		ExperiencesSection,
 		CyclingText,
 		HeroCta,
-		HospitalitySection
+		HospitalitySection,
+		AnimateOnScroll
 	} from '$components';
 
 	import heroImg from '$assets/img/streetView.jpg';
@@ -31,21 +32,78 @@
 </script>
 
 <div class="hero-container">
-	<CyclingText {data} {lang} />
+	<AnimateOnScroll
+		animation="fade-down"
+		duration={1200}
+		easing="ease-out"
+		exitAnimation={true}
+		once={true}
+	>
+		<CyclingText {data} {lang} />
+	</AnimateOnScroll>
+
 	<div class="img-container">
 		<!-- <div class="img-overlay"></div> -->
-		<img src={heroImg} alt="hero" class="hero-img" />
-		<HeroCta {data} {lang} />
+		<AnimateOnScroll
+			animation="zoom-in"
+			duration={1000}
+			delay={300}
+			easing="ease-out"
+			exitAnimation={true}
+			once={true}
+		>
+			<img src={heroImg} alt="hero" class="hero-img" />
+			<HeroCta {data} {lang} />
+		</AnimateOnScroll>
 	</div>
 </div>
 
-<AboutSection {data} />
+<AnimateOnScroll
+	animation="fade-up"
+	threshold={0.15}
+	duration={900}
+	easing="ease-out"
+	exitAnimation={true}
+	once={false}
+>
+	<AboutSection {data} />
+</AnimateOnScroll>
 
-<PlacesSection {data} />
+<AnimateOnScroll
+	animation="slide-in"
+	threshold={0.15}
+	delay={200}
+	duration={1000}
+	easing="ease-out"
+	exitAnimation={true}
+	once={false}
+>
+	<PlacesSection {data} />
+</AnimateOnScroll>
 
-<ExperiencesSection {data} />
+<AnimateOnScroll
+	animation="fade-right"
+	threshold={0.15}
+	delay={200}
+	duration={900}
+	easing="ease-out"
+	exitAnimation={true}
+	once={false}
+>
+	<ExperiencesSection {data} />
+</AnimateOnScroll>
 
-<HospitalitySection {data} />
+<AnimateOnScroll
+	animation="blur-in"
+	threshold={0.15}
+	delay={200}
+	duration={1050}
+	easing="ease-out"
+	exitAnimation={true}
+	once={false}
+>
+	<HospitalitySection {data} />
+</AnimateOnScroll>
 
 <style>
 	.img-container {

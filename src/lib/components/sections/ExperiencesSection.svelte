@@ -1,4 +1,6 @@
 <script lang="ts">
+	import AnimateOnScroll from '$lib/components/AnimateOnScroll.svelte';
+
 	interface SanityProps {
 		data: {
 			experiences: ProcessedExperiences[];
@@ -7,6 +9,11 @@
 	}
 
 	let { data }: SanityProps = $props();
+
+	// Base delay for the entire experiences section
+	const baseDelay = 300;
+	// Delay between each experience card
+	const cardDelay = 300;
 </script>
 
 <section class="experiences-section container" id="experiences">
@@ -16,14 +23,25 @@
 	</p>
 
 	<div class="experiences-container">
-		{#each data.experiences as experience}
-			<a
-				href="/{data.experienceSections[0].language}/experience/{experience.slug}"
-				class="experience-card"
+		{#each data.experiences as experience, index}
+			<AnimateOnScroll
+				animation="slide-up"
+				duration={800}
+				delay={baseDelay + cardDelay * index}
+				easing="bounce"
 			>
-				<h3 class="experience-title">{experience.experienceHeadline}</h3>
-				<img class="experience-image" src={experience.image} alt={experience.experienceHeadline} />
-			</a>
+				<a
+					href="/{data.experienceSections[0].language}/experience/{experience.slug}"
+					class="experience-card"
+				>
+					<h3 class="experience-title">{experience.experienceHeadline}</h3>
+					<img
+						class="experience-image"
+						src={experience.image}
+						alt={experience.experienceHeadline}
+					/>
+				</a>
+			</AnimateOnScroll>
 		{/each}
 	</div>
 </section>

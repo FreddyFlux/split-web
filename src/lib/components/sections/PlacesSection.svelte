@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { PlacesCard } from '$components';
+	import AnimateOnScroll from '$lib/components/AnimateOnScroll.svelte';
 
 	interface SanityProps {
 		data: {
@@ -12,10 +13,16 @@
 </script>
 
 <section class="places-section container" id="places">
-	<h2 class="places-title">{data.placesSections[0].placesHeadline}</h2>
+	<AnimateOnScroll animation="fade-up" duration={800} easing="ease-out">
+		<h2 class="places-title">{data.placesSections[0].placesHeadline}</h2>
+	</AnimateOnScroll>
+
 	<div class="places-description-container">
-		<p class="places-description">{data.placesSections[0].placesContent}</p>
+		<AnimateOnScroll animation="fade-up" duration={800} delay={200} easing="ease-out">
+			<p class="places-description">{data.placesSections[0].placesContent}</p>
+		</AnimateOnScroll>
 	</div>
+
 	<PlacesCard data={data.places} />
 </section>
 
