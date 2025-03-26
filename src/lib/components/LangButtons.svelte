@@ -6,10 +6,10 @@
 
 <div class="button-container">
 	<button onclick={() => setLanguage('en')}
-		><Icon icon="flagpack:gb-ukm" width="32" height="24"></Icon></button
+		><Icon icon="circle-flags:uk" width="40" height="40"></Icon></button
 	>
 	<button onclick={() => setLanguage('no')}
-		><Icon icon="flagpack:no" width="32" height="24"></Icon></button
+		><Icon icon="circle-flags:lang-no" width="40" height="40"></Icon></button
 	>
 </div>
 

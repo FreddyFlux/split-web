@@ -1,51 +1,62 @@
-<script>
-	export let imageUrl = '';
-	export let name = '';
-	export let title = '';
-	export let description = '';
-	export let phone = '';
-	export let email = '';
+<script lang="ts">
+	interface PeopleCardProps {
+		data: {
+			contactPeople: ProcessedContactPeople[];
+		};
+	}
+
+	let { data }: PeopleCardProps = $props();
 </script>
 
-<div class="card">
-	<div class="image-container">
-		<img src={imageUrl} alt={name} />
-	</div>
+<div class="contact-about mb-l mt-l">
+	{#each data.contactPeople as person}
+		<div class="card">
+			<div class="image-container">
+				<img src={person.image} alt={person.peopleName} />
+			</div>
 
-	<div class="content">
-		<h3 class="name">{name}</h3>
-		<p class="title">{title}</p>
-		<p class="description">{description}</p>
+			<div class="content">
+				<h3 class="name">{person.peopleName}</h3>
+				<p class="title">{person.peopleTitle}</p>
+				<p class="description">{person.peopleDescription}</p>
 
-		<div class="contact-info">
-			{#if phone}
-				<a href="tel:{phone}" class="contact-link">
-					<span class="icon">📞</span>
-					{phone}
-				</a>
-			{/if}
-			{#if email}
-				<a href="mailto:{email}" class="contact-link">
-					<span class="icon">✉️</span>
-					{email}
-				</a>
-			{/if}
+				<div class="contact-info">
+					{#if person.peoplePhone}
+						<a href="tel:{person.peoplePhone}" class="contact-link">
+							<span class="icon">📞</span>
+							{person.peoplePhone}
+						</a>
+					{/if}
+					{#if person.peopleEmail}
+						<a href="mailto:{person.peopleEmail}" class="contact-link">
+							<span class="icon">✉️</span>
+							{person.peopleEmail}
+						</a>
+					{/if}
+				</div>
+			</div>
 		</div>
-	</div>
+	{/each}
 </div>
 
 <style>
+	.contact-about {
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+	}
+
 	.card {
 		border-radius: 8px;
-		box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.1);
+		box-shadow: 0 4rem 6rem 0.2rem rgba(0, 0, 0, 0.1);
 		padding: 1.5rem;
 		width: 300px;
 		text-align: center;
 	}
 
 	.image-container {
-		width: 150px;
-		height: 150px;
+		width: 16rem;
+		height: 16rem;
 		margin: 0 auto 1rem;
 		border-radius: 50%;
 		overflow: hidden;
@@ -65,23 +76,24 @@
 	}
 
 	.name {
-		font-size: 1.25rem;
+		font-size: 2.25rem;
 		font-weight: 600;
 		margin: 0;
 		color: #333;
 	}
 
 	.title {
-		font-size: 1rem;
+		font-size: 1.5rem;
+		font-weight: 400;
 		color: #666;
 		margin: 0;
 	}
 
 	.description {
-		font-size: 0.9rem;
+		font-size: 1.1rem;
 		color: #555;
 		margin: 0.5rem 0;
-		line-height: 1.4;
+		line-height: 1.6;
 	}
 
 	.contact-info {
@@ -92,9 +104,8 @@
 	}
 
 	.contact-link {
-		color: #0066cc;
 		text-decoration: none;
-		font-size: 0.9rem;
+		font-size: 1.2rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;

@@ -26,6 +26,7 @@ export function processPlacesSectionEntries(rawPlacesSections: SanityPlacesSecti
 
 export function processPlacesEntries(rawPlaces: SanityPlaces[]) {
 	const builder = imageUrlBuilder(sanityClient);
+
 	const processedPlaces = rawPlaces.map((place) => {
 		// Helper function to safely process image URLs
 		const getImageUrl = (image: { asset?: { _ref: string; _type: string } }) => {

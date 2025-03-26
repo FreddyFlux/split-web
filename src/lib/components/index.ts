@@ -8,9 +8,10 @@ export { default as HeroCta } from './HeroCta.svelte';
 export { default as PlacesCard } from './PlacesCard.svelte';
 export { default as PeopleCard } from './PeopleCard.svelte';
 export { default as IntTel } from './IntTel.svelte';
+export { default as ContactForm } from './ContactForm.svelte';
+export { default as ContactCta } from './ContactCta.svelte';
 
 export { default as AboutSection } from './sections/AboutSection.svelte';
 export { default as PlacesSection } from './sections/PlacesSection.svelte';
 export { default as ExperiencesSection } from './sections/ExperiencesSection.svelte';
 export { default as HospitalitySection } from './sections/HospitalitySection.svelte';
-export { default as ContactSection } from './sections/ContactSection.svelte';

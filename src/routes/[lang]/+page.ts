@@ -79,6 +79,7 @@ export const load: PageLoad = async ({ params }) => {
 	const hospitalitySections = processHospitalitySectionEntries(rawHospitalitySections);
 
 	const experiences = processExperiencesEntries(rawExperiences);
+
 	return {
 		heroSections,
 		aboutSections,

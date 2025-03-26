@@ -35,6 +35,7 @@
 	"dependencies": {
 		"@sanity/client": "^6.28.3",
 		"@sanity/image-url": "^1.1.0",
+		"@sendgrid/mail": "^8.1.4",
 		"@tailwindcss/vite": "^4.0.14",
 		"sanity": "^3.78.1",
 		"svelte-tel-input": "^3.6.0",

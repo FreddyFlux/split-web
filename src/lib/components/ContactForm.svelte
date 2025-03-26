@@ -1,8 +1,27 @@
 <script lang="ts">
-	import { Button, PeopleCard } from '$components';
-	import fredrikImg from '$assets/img/fredrik-profile.jpg';
-	import leanaImg from '$assets/img/leana-profile.jpg';
-	import { IntTel } from '$components';
+	import { Button, IntTel } from '$components';
+
+	interface ContactFormProps {
+		data: {
+			contactForm: ProcessedContactForm;
+		};
+	}
+
+	let { data }: ContactFormProps = $props();
+
+	const {
+		formHeadline,
+		formTitle,
+		formDescription,
+		nameInputPlaceholder,
+		emailInputPlaceholder,
+		messageInputPlaceholder,
+		submitButtonText,
+		successMessage,
+		loadingMessage,
+		errorMessage,
+		language
+	} = data.contactForm;
 
 	let contactName = $state('');
 	let contactMail = $state('');
@@ -12,8 +31,6 @@
 	let isEmailSent = $state(false);
 	let showErrorMessage = $state(false);
 	let isLoading = $state(false);
-
-	$inspect(isEmailSent);
 
 	async function onSubmit(event: Event) {
 		event.preventDefault();
@@ -65,100 +82,62 @@
 	});
 </script>
 
-<section class="mt-l">
-	<div class="contact-about mb-l">
-		<PeopleCard
-			imageUrl={fredrikImg}
-			name="Fredrik"
-			title="CEO"
-			description="Fredrik er en erfaren entreprenør med et stort nettverk av kontakter i bransjen."
-			phone="+47 45 39 96 39"
-			email="fredrik@digidevs.no"
-		/>
-		<PeopleCard
-			imageUrl={leanaImg}
-			name="Leana"
-			title="CEO"
-			description="Leana er en erfaren entreprenør med et stort nettverk av kontakter i bransjen."
-			phone="+47 45 39 96 39"
-			email="leana@digidevs.no"
-		/>
-	</div>
-	<h2 class="contact-form container">La oss ta en prat</h2>
-	<div class="form-container default-margin mt-m">
-		{#if isEmailSent}
-			<div class="spinner-container">
-				<h3>Takk for at du tar kontakt med meg. Jeg svarer vanligvis innen 48 timer.</h3>
-			</div>
-		{:else if isLoading}
-			<div class="spinner-container">
-				<div class="spinner"></div>
-				<h3>Sender kontaktbeskjeden</h3>
-			</div>
-		{:else if showErrorMessage}
-			<h3>
-				Det ser ut til at vi har problemer med vår server. Send meg en e-post til <a
-					href="mailto:fredrik@digidevs.no"
-					class="link">fredrik@digidevs.no</a
-				>
-			</h3>
-		{:else}
-			<div class="form-text mb-m">
-				<h3 class="bold mb-s">Fortell meg om prosjektet ditt</h3>
+<h2 class="contact-form container mt-l">{formHeadline}</h2>
+<div class="form-container default-margin mt-m">
+	{#if isEmailSent}
+		<div class="spinner-container">
+			<h3>{successMessage}</h3>
+		</div>
+	{:else if isLoading}
+		<div class="spinner-container">
+			<div class="spinner"></div>
+			<h3>{loadingMessage}</h3>
+		</div>
+	{:else if showErrorMessage}
+		<h3>
+			{errorMessage} <a href="mailto:fredrik@digidevs.no" class="link">fredrik@digidevs.no</a>
+		</h3>
+	{:else}
+		<div class="form-text mb-m">
+			<h3 class="bold mb-s">{formTitle}</h3>
+			{#each formDescription as description}
 				<p>
-					Det er alltid spennende å høre om nye og innovative ideer! Uansett om du er i tidlig fase
-					av planlegging eller har et tydelig definert prosjekt, er jeg her for å hjelpe deg med å
-					bringe din idé til liv.
+					{description}
 				</p>
-				<p>
-					Skriv gjerne inn noen detaljer om ditt prosjekt, så starter vi en dialog om hvordan vi kan
-					arbeide sammen. Jeg ser frem til å bli kjent med deg og diskutere mulighetene. Høres
-					snart!
-				</p>
-			</div>
+			{/each}
+		</div>
 
-			<form>
-				<input
-					type="text"
-					class="text-input mb-s"
-					class:input-error={isFormInvalid && !Boolean(contactName.length)}
-					placeholder="Ditt navn"
-					bind:value={contactName}
-				/>
-				<input
-					type="text"
-					class="text-input mb-s"
-					class:input-error={isFormInvalid && !Boolean(contactMail.length)}
-					placeholder="Din Email"
-					bind:value={contactMail}
-				/>
-				<IntTel
-					value={contactPhone}
-					isInvalid={isFormInvalid && !contactPhone}
-					on:change={handlePhoneChange}
-				/>
-				<textarea
-					placeholder="Fortell meg hva du lurer på."
-					class:input-error={isFormInvalid && !Boolean(informationAboutProject.length)}
-					bind:value={informationAboutProject}
-				></textarea>
-				<Button onclick={onSubmit} className="btn-send">Send</Button>
-			</form>
-		{/if}
-	</div>
-</section>
+		<form>
+			<input
+				type="text"
+				class="text-input mb-s"
+				class:input-error={isFormInvalid && !Boolean(contactName.length)}
+				placeholder={nameInputPlaceholder}
+				bind:value={contactName}
+			/>
+			<input
+				type="text"
+				class="text-input mb-s"
+				class:input-error={isFormInvalid && !Boolean(contactMail.length)}
+				placeholder={emailInputPlaceholder}
+				bind:value={contactMail}
+			/>
+			<IntTel
+				value={contactPhone}
+				isInvalid={isFormInvalid && !contactPhone}
+				on:change={handlePhoneChange}
+			/>
+			<textarea
+				placeholder={messageInputPlaceholder}
+				class:input-error={isFormInvalid && !Boolean(informationAboutProject.length)}
+				bind:value={informationAboutProject}
+			></textarea>
+			<Button onclick={onSubmit} className="btn-send">{submitButtonText}</Button>
+		</form>
+	{/if}
+</div>
 
 <style>
-	section {
-		padding: 7rem 0 7rem 0;
-	}
-
-	.contact-about {
-		display: flex;
-		justify-content: center;
-		gap: 2rem;
-	}
-
 	.form-container {
 		display: flex;
 		justify-content: space-between;
