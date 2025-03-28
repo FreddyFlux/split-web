@@ -83,7 +83,7 @@
 </script>
 
 <h2 class="contact-form container mt-l">{formHeadline}</h2>
-<div class="form-container default-margin mt-m">
+<div class="form-container container mt-m">
 	{#if isEmailSent}
 		<div class="spinner-container">
 			<h3>{successMessage}</h3>

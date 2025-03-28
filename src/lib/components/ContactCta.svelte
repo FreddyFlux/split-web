@@ -24,7 +24,7 @@
 	.contact-cta-container {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: flex-start;
 	}
 
 	.contact-cta {

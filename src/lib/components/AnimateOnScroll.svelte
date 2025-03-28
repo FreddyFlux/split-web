@@ -86,8 +86,8 @@
 			},
 			{
 				threshold,
-				// Start the animation 22.5% before the intersection point
-				rootMargin: '15% 0px -30% 0px'
+				// When the animation start (8%) and out (30%) should be triggered
+				rootMargin: '8% 0px -30% 0px'
 			}
 		);
 
