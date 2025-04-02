@@ -14,11 +14,23 @@ import { processPlacesSectionEntries, processPlacesEntries } from '$lib/utils/pl
 
 import { processAboutSectionEntries } from '$lib/utils/aboutSanity';
 
+import { processNavbarEntries } from '$lib/utils/navbarSanity';
+
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ params }) => {
 	const lang = params.lang;
+
+	const rawNavbar: SanityNavbar[] = await sanityClient.fetch(
+		`*[_type == "navbar" && language == $lang]`,
+		{ lang }
+	);
+
+	if (rawNavbar.length !== 1) {
+		throw error(404, 'Page not found');
+	}
+	const nav = processNavbarEntries(rawNavbar)[0];
 
 	const rawHeroSections: SanityHeroSection[] = await sanityClient.fetch(
 		`*[_type == "heroSection" && language == $lang]`,
@@ -88,6 +100,7 @@ export const load: PageLoad = async ({ params }) => {
 		experiences,
 		experienceSections,
 		hospitality,
-		hospitalitySections
+		hospitalitySections,
+		nav
 	};
 };

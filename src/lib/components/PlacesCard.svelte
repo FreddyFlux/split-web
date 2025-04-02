@@ -53,7 +53,8 @@
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 2rem;
-		padding: 2rem 0;
+		padding-top: 2rem;
+		padding-bottom: 2rem;
 	}
 
 	.places-card {

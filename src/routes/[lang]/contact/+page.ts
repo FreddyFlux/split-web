@@ -3,6 +3,7 @@ import sanityClient, {
 	processContactPeopleEntries,
 	processContactFormEntries
 } from '$lib/utils/contactSanity';
+import { processNavbarEntries } from '$lib/utils/navbarSanity';
 
 import type { PageLoad } from './$types';
 
@@ -10,6 +11,16 @@ import { error } from '@sveltejs/kit';
 
 export const load: PageLoad = async ({ params }) => {
 	const lang = params.lang;
+
+	const rawNavbar: SanityNavbar[] = await sanityClient.fetch(
+		`*[_type == "navbar" && language == $lang]`,
+		{ lang }
+	);
+
+	if (rawNavbar.length !== 1) {
+		throw error(404, 'Page not found');
+	}
+	const nav = processNavbarEntries(rawNavbar)[0];
 
 	const rawContactCta: SanityContactCta[] = await sanityClient.fetch(
 		`*[_type == "contactCta" && language == $lang]`,
@@ -43,6 +54,7 @@ export const load: PageLoad = async ({ params }) => {
 	return {
 		contactCta,
 		contactPeople,
-		contactForm
+		contactForm,
+		nav
 	};
 };

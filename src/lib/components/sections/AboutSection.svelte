@@ -60,16 +60,18 @@
 				</div>
 			</AnimateOnScroll>
 
-			<AnimateOnScroll
-				animation="fade-right"
-				duration={800}
-				delay={baseDelay + elementDelay * 3}
-				easing="bounce"
-			>
-				<p class="about-text">
-					{aboutDescription}
-				</p>
-			</AnimateOnScroll>
+			{#each aboutDescription as description}
+				<AnimateOnScroll
+					animation="fade-right"
+					duration={800}
+					delay={baseDelay + elementDelay * 3}
+					easing="bounce"
+				>
+					<p class="about-text">
+						{description}
+					</p>
+				</AnimateOnScroll>
+			{/each}
 		</div>
 	</div>
 
@@ -79,11 +81,13 @@
 
 	<div class="about-container">
 		<div class="about-text-container">
-			<AnimateOnScroll animation="fade-right" duration={800} delay={baseDelay} easing="bounce">
-				<p class="about-text">
-					{whyUsDescription}
-				</p>
-			</AnimateOnScroll>
+			{#each whyUsDescription as description}
+				<AnimateOnScroll animation="fade-right" duration={800} delay={baseDelay} easing="bounce">
+					<p class="about-text">
+						{description}
+					</p>
+				</AnimateOnScroll>
+			{/each}
 
 			<AnimateOnScroll
 				animation="fade-right"
@@ -139,6 +143,8 @@
 	}
 
 	.about-img {
+		width: 100%;
+		height: auto;
 		border-radius: 30px;
 	}
 
@@ -184,5 +190,69 @@
 
 	.about-text-img:hover {
 		transform: scale(1.05);
+	}
+
+	/* Responsive styles */
+	@media screen and (max-width: 1200px) {
+		.about-container {
+			gap: 3rem;
+		}
+	}
+
+	@media screen and (max-width: 900px) {
+		.about-section {
+			padding: 8vh 0;
+		}
+
+		.about-container {
+			gap: 2.5rem;
+		}
+
+		.about-text-img-container {
+			gap: 3rem;
+		}
+
+		.about-text-img-link-container {
+			width: 30%;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.about-section {
+			padding: 6vh 0;
+		}
+
+		.about-container {
+			flex-direction: column;
+			gap: 3rem;
+		}
+
+		.about-container:nth-child(4) {
+			flex-direction: column-reverse;
+		}
+
+		.about-text-img-container {
+			gap: 2rem;
+		}
+
+		.about-text-img-link-container {
+			width: 35%;
+		}
+
+		.about-img {
+			border-radius: 20px;
+		}
+	}
+
+	@media screen and (max-width: 400px) {
+		.about-text-img-container {
+			flex-direction: column;
+			align-items: center;
+			gap: 3rem;
+		}
+
+		.about-text-img-link-container {
+			width: 60%;
+		}
 	}
 </style>

@@ -77,6 +77,7 @@
 
 	.cycling-text-container {
 		margin-bottom: 2vh;
+		width: 100%;
 	}
 
 	.cycling-text {
@@ -98,6 +99,48 @@
 		}
 		50% {
 			border-color: currentColor;
+		}
+	}
+
+	/* Responsive styles */
+	@media screen and (max-width: 1200px) {
+		.cycling-text {
+			margin-left: 10vw;
+		}
+	}
+
+	@media screen and (max-width: 900px) {
+		h1 {
+			font-size: 10vw;
+		}
+
+		.cycling-text {
+			margin-left: 5vw;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		h1 {
+			font-size: 12vw;
+		}
+
+		.cycling-text {
+			margin-left: 2rem;
+			width: 95vw;
+		}
+
+		.cycling-text-container {
+			margin-bottom: 1.5vh;
+		}
+	}
+
+	@media screen and (max-width: 400px) {
+		h1 {
+			font-size: 14vw;
+		}
+
+		.cycling-text-container {
+			margin-bottom: 1vh;
 		}
 	}
 </style>

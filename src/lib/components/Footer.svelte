@@ -4,12 +4,15 @@
 	import Icon from '@iconify/svelte';
 	import { onMount } from 'svelte';
 
-	let currentLang: string;
+	interface FooterProps {
+		data: {
+			nav: ProcessedNavbar;
+		};
+	}
 
-	onMount(() => {
-		const pathParts = window.location.pathname.split('/').filter(Boolean);
-		currentLang = pathParts[0];
-	});
+	const { data }: FooterProps = $props();
+
+	const { language, navbar, copyrightText } = data.nav;
 </script>
 
 <footer class="footer">
@@ -32,6 +35,9 @@
 			>
 				<Icon icon="mdi:linkedin" width="32" height="32"></Icon>
 			</a>
+			<div class="copyright">
+				<p>&copy;{new Date().getFullYear()} digiDEVS. {copyrightText}</p>
+			</div>
 		</div>
 
 		<!-- Logo -->
@@ -43,13 +49,9 @@
 
 		<!-- Site Links -->
 		<nav class="site-links">
-			<a href={`/${currentLang}/#places`} class:active={$page.url.pathname === '#places'}>Places</a>
-			<a href={`/${currentLang}/#experiences`} class:active={$page.url.pathname === '#experiences'}
-				>Experiences</a
-			>
-			<a href={`/${currentLang}/#hospitality`} class:active={$page.url.pathname === '#hospitality'}
-				>Hospitality</a
-			>
+			{#each navbar as link}
+				<a href={`/${language}/${link.link}`}>{link.name}</a>
+			{/each}
 		</nav>
 	</div>
 </footer>
@@ -72,6 +74,12 @@
 	.social-links {
 		display: flex;
 		gap: 1.5rem;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.copyright {
+		margin-top: 1rem;
 	}
 
 	.social-links a {
@@ -80,7 +88,7 @@
 	}
 
 	.social-links a:hover {
-		color: #ffd700;
+		color: var(--color-turquoise);
 	}
 
 	.logo img {
@@ -100,12 +108,7 @@
 	}
 
 	.site-links a:hover {
-		color: #ffd700;
-	}
-
-	.site-links a.active {
-		color: #ffd700;
-		font-weight: bold;
+		color: var(--color-turquoise);
 	}
 
 	@media (max-width: 768px) {

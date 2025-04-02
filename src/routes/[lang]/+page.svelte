@@ -6,13 +6,16 @@
 		CyclingText,
 		HeroCta,
 		HospitalitySection,
-		AnimateOnScroll
+		AnimateOnScroll,
+		Navbar,
+		Footer
 	} from '$components';
 
 	import heroImg from '$assets/img/streetView.jpg';
 
 	interface SanityProps {
 		data: {
+			nav: ProcessedNavbar;
 			heroSections: ProcessedHeroSection;
 			aboutSections: ProcessedAboutSection;
 			language: string;
@@ -30,6 +33,8 @@
 
 	let language = $state(lang);
 </script>
+
+<Navbar {data} {lang} />
 
 <div class="hero-container">
 	<AnimateOnScroll
@@ -104,6 +109,8 @@
 >
 	<HospitalitySection {data} />
 </AnimateOnScroll>
+
+<Footer {data} />
 
 <style>
 	.img-container {

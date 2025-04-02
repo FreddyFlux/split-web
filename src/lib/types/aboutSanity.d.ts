@@ -5,9 +5,9 @@ type SanityAboutSection = {
 	_updatedAt: string;
 	_rev: string;
 	aboutTitle: string;
-	aboutDescription: string;
+	aboutDescription: Array<string>;
 	whyUsTitle: string;
-	whyUsDescription: string;
+	whyUsDescription: Array<string>;
 	linkList: Array<{
 		name: string;
 		linkUrl: string;
@@ -29,9 +29,9 @@ type SanityAboutSection = {
 
 interface ProcessedAboutSection {
 	aboutTitle: string;
-	aboutDescription: string;
+	aboutDescription: Array<string>;
 	whyUsTitle: string;
-	whyUsDescription: string;
+	whyUsDescription: Array<string>;
 	linkList: Array<{
 		name: string;
 		linkUrl: string;
