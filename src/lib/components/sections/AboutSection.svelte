@@ -24,7 +24,7 @@
 
 <section class="about-section container">
 	<AnimateOnScroll animation="fade-right" duration={800} easing="bounce">
-		<h2 class="about-title mb-m">{aboutTitle}</h2>
+		<h2 class="about-title about-title-left mb-m">{aboutTitle}</h2>
 	</AnimateOnScroll>
 
 	<div class="about-container">
@@ -76,7 +76,7 @@
 	</div>
 
 	<AnimateOnScroll animation="fade-right" duration={800} easing="bounce">
-		<h2 class="about-title mb-m mt-l text-align-right mt-l">{whyUsTitle}</h2>
+		<h2 class="about-title about-title-right mb-m mt-l text-align-right mt-l">{whyUsTitle}</h2>
 	</AnimateOnScroll>
 
 	<div class="about-container">
@@ -135,6 +135,7 @@
 		flex-direction: row;
 		flex: 50% 50%;
 		gap: 4rem;
+		padding: 0 4rem;
 	}
 
 	.about-img-container {
@@ -145,7 +146,7 @@
 	.about-img {
 		width: 100%;
 		height: auto;
-		border-radius: 30px;
+		border-radius: 20px;
 	}
 
 	.about-text-container {
@@ -153,7 +154,6 @@
 	}
 
 	.about-text {
-		font-size: 1.8rem;
 		line-height: 1.5;
 	}
 
@@ -205,11 +205,37 @@
 		}
 
 		.about-container {
-			gap: 2.5rem;
+			flex-direction: column;
+			gap: 3rem;
+		}
+
+		.about-img {
+			margin: 0 auto;
+			width: 70%;
+		}
+
+		.about-text {
+			width: 50%;
+			margin: 0 auto;
+		}
+
+		.about-title-left {
+			margin-left: 10vh;
+		}
+
+		.about-title-right {
+			margin-right: 10vh;
+		}
+
+		.about-text-img {
+			width: 100%;
+			height: 100%;
 		}
 
 		.about-text-img-container {
+			margin: 4rem auto;
 			gap: 3rem;
+			width: 60%;
 		}
 
 		.about-text-img-link-container {
@@ -220,11 +246,6 @@
 	@media screen and (max-width: 600px) {
 		.about-section {
 			padding: 6vh 0;
-		}
-
-		.about-container {
-			flex-direction: column;
-			gap: 3rem;
 		}
 
 		.about-container:nth-child(4) {

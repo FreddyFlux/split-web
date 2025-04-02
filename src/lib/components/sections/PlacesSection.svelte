@@ -31,6 +31,12 @@
 		padding-top: 3vh;
 	}
 
+	@media (max-width: 600px) {
+		.places-section {
+			margin: 0 8rem;
+		}
+	}
+
 	.places-title {
 		font-weight: 600;
 		margin-bottom: 1rem;

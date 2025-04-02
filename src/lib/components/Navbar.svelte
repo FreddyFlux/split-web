@@ -224,6 +224,18 @@
 	</div>
 {/if}
 
+<!-- Add a global style to control overflow at the document level -->
+<svelte:head>
+	<style>
+		body,
+		html {
+			overflow-x: hidden; /* Prevent horizontal scrolling at document level */
+			width: 100%;
+			position: relative;
+		}
+	</style>
+</svelte:head>
+
 <style>
 	/* Main navigation container */
 	.navigation {
@@ -239,6 +251,23 @@
 		background-color: var(--color-kamen-light-2);
 		z-index: 1000;
 		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+		overflow-x: hidden; /* Prevent horizontal overflow */
+		width: 100%; /* Ensure it takes up exactly 100% of viewport width */
+		box-sizing: border-box; /* Include padding in width calculation */
+	}
+
+	@media screen and (max-width: 75em) {
+		/* 1200px */
+		.navigation {
+			padding: 1rem 4rem;
+		}
+	}
+
+	@media screen and (max-width: 56.25em) {
+		/* 900px */
+		.navigation {
+			padding: 1rem 3rem;
+		}
 	}
 
 	@media screen and (max-width: 37.5em) {
@@ -248,12 +277,22 @@
 		}
 	}
 
+	@media screen and (max-width: 25em) {
+		/* 400px */
+		.navigation {
+			padding: 0.8rem 1.5rem;
+		}
+	}
+
 	/* Menu items container */
 	.menu {
 		display: flex;
 		align-items: center;
 		gap: 4rem;
-		font-size: 3rem;
+		font-size: 2.8rem; /* Reduced from 3rem */
+		flex-wrap: nowrap; /* Prevent wrapping of menu items */
+		max-width: calc(100% - 10rem); /* Ensure menu doesn't push beyond viewport */
+		overflow: hidden; /* Control overflow in menu */
 	}
 
 	@media screen and (max-width: 56.25em) {
@@ -266,7 +305,7 @@
 	@media screen and (max-width: 37.5em) {
 		/* 600px */
 		.menu {
-			gap: 2rem;
+			gap: 1.5rem;
 			font-size: 1.8rem;
 		}
 	}
@@ -279,19 +318,29 @@
 
 	/* Logo styling */
 	.logo {
-		max-width: 30rem;
+		max-width: 25rem; /* Reduced from 30rem */
+		min-width: 0; /* Allow the logo to shrink if needed */
+		flex-shrink: 1; /* Allow the logo to shrink */
+		overflow: hidden; /* Prevent overflow from logo container */
 	}
 
 	@media screen and (max-width: 56.25em) {
 		.logo {
-			max-width: 20rem;
+			max-width: 18rem;
 		}
 	}
 
 	@media screen and (max-width: 37.5em) {
 		/* 600px */
 		.logo {
-			max-width: 13rem;
+			max-width: 12rem;
+		}
+	}
+
+	@media screen and (max-width: 25em) {
+		/* 400px */
+		.logo {
+			max-width: 10rem;
 		}
 	}
 
@@ -299,6 +348,7 @@
 		width: 100%;
 		height: auto;
 		display: block;
+		max-width: 100%; /* Ensure image respects container */
 	}
 
 	.logo a {
@@ -354,11 +404,13 @@
 		top: calc(12vh - 1px); /* Overlap 1px to avoid gap */
 		right: 0;
 		width: 20%;
+		max-width: 300px; /* Add a max-width to prevent it from being too wide */
 		height: auto;
 		background-color: var(--color-kamen-light-2);
 		z-index: 1001;
 		box-shadow: -2px 4px 10px rgba(0, 0, 0, 0.1);
 		overflow-y: auto;
+		overflow-x: hidden; /* Prevent horizontal overflow in mobile menu */
 		border-bottom-left-radius: 8px;
 	}
 
@@ -392,12 +444,22 @@
 	@media screen and (max-width: 56.25em) {
 		.mobile-menu-dropdown {
 			width: 30%;
+			min-width: 200px;
 		}
 	}
 
 	@media screen and (max-width: 37.5em) {
 		.mobile-menu-dropdown {
 			width: 50%;
+			min-width: 180px;
+		}
+	}
+
+	@media screen and (max-width: 25em) {
+		/* 400px */
+		.mobile-menu-dropdown {
+			width: 70%;
+			min-width: 150px;
 		}
 	}
 

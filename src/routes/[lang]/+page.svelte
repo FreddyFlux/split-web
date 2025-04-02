@@ -114,30 +114,12 @@
 
 <style>
 	.img-container {
+		display: flex;
+		justify-content: center;
 		width: 90%;
 		position: relative;
 		overflow: hidden;
 	}
-
-	/* .img-overlay {
-		position: absolute;
-		border-radius: 30px;
-		width: 100%;
-		height: 100%;
-		background-image: -webkit-gradient(
-			linear,
-			left top,
-			right bottom,
-			from(var(--color-turquoise)),
-			to(var(--color-turquoise-dark))
-		);
-		background-image: linear-gradient(
-			to right bottom,
-			var(--color-turquoise),
-			var(--color-turquoise-dark)
-		);
-		opacity: 0.42;
-	} */
 
 	.hero-img {
 		width: 100%;
@@ -148,10 +130,9 @@
 
 	.hero-container {
 		padding-top: 12vh;
-		height: 88vh;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: flex-start;
 		align-items: center;
 		position: relative;
 	}

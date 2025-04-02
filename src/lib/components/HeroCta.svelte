@@ -22,7 +22,7 @@
 	<p>{ctaDescription}</p>
 	<div class="hero-cta-links">
 		{#each buttonLink as link}
-			<a href={link.url}>{link.urlDescription}</a>
+			<a href={link.url}>{link.urlDescription} &rarr;</a>
 		{/each}
 	</div>
 </div>
@@ -33,13 +33,40 @@
 		bottom: 4%;
 		right: 2%;
 		background-color: rgba(128, 167, 173, 0.85);
-		border-radius: 30px;
+		border-radius: 20px;
 		padding: 1vh 2vh;
-		max-width: 17vw;
-		max-height: 5vh;
+		max-width: 28vw;
+		max-height: 7vh;
 		overflow: hidden;
 		transition: max-height 0.6s ease-in-out;
 		overflow: hidden;
+	}
+
+	/* Media query for 1200px - 10% wider */
+	@media (max-width: 1200px) {
+		.hero-cta-container {
+			max-width: 28.8vw; /* 28vw * 1.1 */
+		}
+	}
+
+	/* Media query for 900px - 20% longer */
+	@media (max-width: 900px) {
+		.hero-cta-container {
+			max-width: 34.4vw; /* 28vw * 1.2 - 20% wider */
+		}
+	}
+
+	/* Media query for 600px - 30% longer */
+	@media (max-width: 600px) {
+		.hero-cta-container {
+			max-width: 42vw; /* 28vw * 1.3 - 30% wider */
+		}
+	}
+
+	@media (max-width: 400px) {
+		.hero-cta-container {
+			max-width: 48vw; /* 28vw * 1.3 - 30% wider */
+		}
 	}
 
 	.hero-cta-container:hover {
@@ -56,6 +83,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
-		font-size: 1.2rem;
+		font-size: 2.2rem;
 	}
 </style>

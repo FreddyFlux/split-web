@@ -57,6 +57,13 @@
 		padding-bottom: 2rem;
 	}
 
+	@media (max-width: 600px) {
+		.places-card-grid {
+			grid-template-columns: repeat(1, 1fr);
+			margin-right: 18rem;
+		}
+	}
+
 	.places-card {
 		width: 100%;
 		height: 100%;
